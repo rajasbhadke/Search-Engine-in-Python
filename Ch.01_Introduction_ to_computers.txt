@@ -1,0 +1,1271 @@
+ 
+1
+ 
+Chapter 
+O
+ne
+ 
+Introduction to Computer
+ 
+ 
+Computer
+ 
+A computer is an electronic device, operating under the control of instructions stored 
+in its own memory that can accept data (input), process the data according to specified 
+rules, produce information 
+(output), and store the information for future use
+
+.
+ 
+ 
+Functionalities of a computer
+
+ 
+ 
+Any digital computer carries out five functions in gross terms: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Computer Components
+ 
+Any kind of computers consists of 
+HARDWARE 
+AND 
+SOFTWARE
+.
+ 
+ 
+Hardware:
+ 
+Computer hardware is the collection of
+ 
+physical elements that constitutes a computer 
+system. Computer hardware refers to the physical parts or components of a computer 
+such as the monitor, mouse, keyboard, computer data storage, hard drive disk (HDD), 
+system unit (graphic cards, sound cards, m
+emory, motherboard and chips), etc. all of 
+which are physical objects that can be touched
+.
+
+ 
+                                        
+                  
+ 
+
+
+Vermaat
+, Misty E. Microsoft Office 2013 Introductory. 
+Cengage Learning, p.IT3.  2014
+ 
+
+
+http://www.tutorialspoint.com/computer_fundamentals/computer_quick_guide.htm
+ 
+
+
+http://en.wikipedia.org/wiki/Computer_hardware 
+ 
+ 
+ 
+2
+ 
+ 
+Input Devices 
+ 
+Input device is any peripheral (piece of computer hardware equipment to provide data 
+and control signals to an information processing system such 
+as a computer or other 
+information appliance.
+ 
+Input device 
+Translate data from 
+form
+ 
+that humans understand to one that the computer 
+can work with
+. 
+Most common are keyboard and mouse
+ 
+ 
+ 
+Example of 
+Input Devices:
+-
+ 
+1
+.
+ 
+Keyboard
+ 
+2
+.
+ 
+Mouse (pointing device)
+ 
+3
+.
+ 
+Microphone
+ 
+4
+.
+ 
+Touch screen
+ 
+5
+.
+ 
+Scanner
+ 
+6
+.
+ 
+Webcam
+ 
+7
+.
+ 
+Touchpads
+ 
+8
+.
+ 
+MIDI keyboard
+ 
+9
+.
+ 
+ 
+10
+.
+ 
+Graphics Tablets
+ 
+11
+.
+ 
+Cameras
+ 
+12
+.
+ 
+Pen Input
+ 
+13
+.
+ 
+Video Capture Hardware
+ 
+14
+.
+ 
+Microphone
+ 
+15
+.
+ 
+Trackballs
+ 
+16
+.
+ 
+Barcode reader
+ 
+17
+.
+ 
+Digital camera
+ 
+18
+.
+ 
+Joystick
+ 
+19
+.
+ 
+Gamepad
+ 
+20
+.
+ 
+Electronic Whiteboard
+ 
+21
+.
+ 
+ 
+ 
+Note: 
+The most common use keyboard is the 
+QWERTY keyboard
+
+ 
+Generally standard
+ 
+Keyboard 
+has 104 keys
+
+ 
+ 
+ 
+ 
+ 
+3
+ 
+Central Processing Unit (CPU) 
+
+ 
+A CPU is brain of a computer. It is responsible for
+
+all functions and processes. 
+Regarding computing power, the CPU is the most important element of a computer 
+system. 
+ 
+ 
+The CPU is comprised of three main parts
+
+ 
+* 
+Arithmetic
+
+Logic
+
+Uni
+t (ALU)
+:
+
+E
+xecutes all arithmetic and logical operations.
+ 
+Arithmetic 
+calculations like as addition, subtraction, multiplication and division
+. 
+Logical operation like compare numbers, letters, or special characters
+ 
+*
+
+Control
+
+Uni
+t (CU): 
+
+controls and co
+-
+ordinates computer components.
+ 
+1
+.
+ 
+Read the code for the next instruction to 
+be executed.
+ 
+2
+.
+ 
+Increment the program counter so it points to the next instruction.
+ 
+3
+.
+ 
+Read whatever data the instruction requires from cells in memory.
+ 
+4
+.
+ 
+Provide the necessary data to an ALU or register.
+ 
+5
+.
+ 
+If the instruction requires an ALU or specialized hardware 
+to complete, instruct 
+the hardware to perform the requested operation.
+ 
+*
+
+Registers
+
+Stores
+
+the
+
+data
+
+that
+
+is
+
+to
+
+be
+
+executed
+
+next, "
+very fast storage area
+".
+ 
+ 
+Primary Memory:
+-
+ 
+1. 
+RAM
+: Random Access Memory (RAM) is a memory scheme within the computer 
+system responsible for storing data on a temporary basis, so that it can be promptly 
+accessed by the processor as and when needed. It is volatile in nature, which means 
+that data will be e
+rased once supply to the storage device is turned off. RAM stores 
+data randomly and the processor accesses these data randomly from the RAM 
+storage. RAM is considered "random access" because you can access any memory 
+cell directly if you know the row and c
+olumn that intersect at that cell.
+ 
+2. 
+ROM
+ 
+(Read Only Memory): ROM is a permanent form of storage. ROM stays 
+active regardless of whether power supply to it is turned on or off
+.
+ 
+ROM devices 
+do not allow data stored on them to be modified.
+ 
+ 
+Secondary Memory:
+-
+ 
+ 
+Stores data and programs
+
+permanently
+
+its retained after the
+
+power is turned off
+ 
+ 
+1. Hard drive (HD): A hard disk is part of a unit, often called a "disk drive," "hard drive," or "hard 
+disk drive," that store and provides relatively quick access to 
+large amounts of data on an 
+electromagnetically char
+ged surface or set of surfaces.
+ 
+2. Optical Disk: an optical disc drive (ODD) is a disk drive that uses laser light as part of the process 
+of reading or writing data to or from optical discs. Some drives c
+an only read from discs, but recent 
+drives are commonly both readers and recorders, also called burners or writers. Compact discs, 
+DVDs, and Blu
+-
+ray discs are common types of optical media which can be read and recorded by 
+such drives. Optical drive is the
+ 
+generic name; drives are usually described as "CD" "DVD", or 
+"Bluray", followed by "drive", "writer", etc. There are three main types of optical media: CD, 
+DVD, and Blu
+-
+ray disc. CDs can store up to 700 megabytes (MB) of data and DVDs can store up 
+to 8.4 
+GB of data. Blu
+-
+ray discs, which are the newest type of optical media, can store up to 50 
+GB of data. This storage capacity is a clear advantage over the floppy disk storage media (a 
+magnetic media), which only has a capacity of 1.44 MB.
+ 
+ 
+4
+ 
+3. Flash Disk
+ 
+A st
+orage module made of flash memory chips. A Flash disks have no mechanical platters or access 
+arms, but the term "disk" is used because the data are accessed as if they were on a hard drive. The 
+disk storage structure is emulated.
+ 
+ 
+ 
+ 
+Output devices 
+ 
+An 
+output device is any piece of computer hardware equipment used to communicate 
+the results of data processing carried out by an information processing system (such 
+as a computer) which converts the electronically generated information into human
+-
+readable fo
+rm.
+ 
+ 
+Example on Output Devices:
+ 
+1
+.
+ 
+Monitor
+ 
+2
+.
+ 
+LCD Projection Panels
+ 
+3
+.
+ 
+Printers (all types)
+ 
+4
+.
+ 
+Computer Output Microfilm (COM)
+ 
+5
+.
+ 
+Plotters
+ 
+6
+.
+ 
+Speaker(s)
+ 
+7
+.
+ 
+Projector
+ 
+ 
+ 
+Note Basic types of monitors are a.Cathode Ray Tube (CRT). B. Liquid Crystal Displays (LCD). 
+c.light
+-
+emitting diod
+e (LED).
+ 
+Printer types: 1
+-
+Laser Printer. 2
+-
+Ink Jet Printer. 3
+-
+Dot Matrix Printer
+ 
+ 
+ 
+ 
+5
+ 
+Software
+ 
+Software is a generic term for organized
+ 
+collections of computer data and
+ 
+instructions, 
+often broken into two major
+ 
+categories: system software that
+ 
+provides the basic non
+-
+task
+-
+specific
+ 
+functions of the computer, and application software which is used
+ 
+by 
+users to accomplish specific tasks.
+ 
+ 
+ 
+Software Types
+ 
+A. System software
+ 
+is responsible for controlling, integrating, and
+ 
+managing the 
+individual hardw
+are components of a computer system so
+ 
+that other software and 
+the users of the system see it as a functional unit
+ 
+without having to be concerned 
+with the low
+-
+level details such as
+ 
+transferring data from memory to disk, or 
+rendering text onto a display.
+ 
+Ge
+nerally, system software consists of an operating 
+system and some
+ 
+fundamental utilities such as disk formatters, file managers, 
+display
+ 
+managers, text editors, user authentication (login) and management tools,
+ 
+and networking and device control software.
+ 
+ 
+B
+. 
+Application software
+ 
+is used to accomplish specific tasks other than
+ 
+just running 
+the computer system. Application software may consist of a
+ 
+single program, such 
+as an image viewer; a small collection of programs
+ 
+(often called a software 
+package) that 
+work closely together to accomplish a
+ 
+task, such as a spreadsheet or 
+text processing system; a larger collection
+ 
+(often called a software suite) of related 
+but independent programs and
+ 
+packages that have a common user interface or 
+shared data format, such
+ 
+as Microsoft Office, which consists of closely integrated 
+word processor,
+ 
+spreadsheet, database, etc.; or a software system, such as a 
+database
+ 
+management system, which is a collection of fundamental programs that
+ 
+may provide some service to a variety of o
+ther independent applications.
+ 
+Comparison Application Software and System Software
+ 
+ 
+System Software
+ 
+Application Software
+ 
+ 
+Computer software, or just software is a 
+general term primarily used for digitally stored 
+data such as computer programs and other 
+ki
+nds of information read and written by 
+computers. App comes under computer 
+software though it has a wide scope now.
+ 
+Application software, also known as an 
+application or an "app", is computer software 
+designed to help the user to perform specific 
+tasks.
+ 
+Example:
+ 
+ 
+1) Microsoft Windows
+ 
+2) Linux
+ 
+3) Unix
+ 
+4) Mac OSX
+ 
+5) DOS
+ 
+1) Opera (Web Browser)
+ 
+2) Microsoft Word (Word Processing) 
+ 
+3) Microsoft Excel (Spreadsheet software)
+ 
+4) MySQL (Database Software)
+ 
+5) Microsoft PowerPoint (Presentation Software)
+ 
+6) Adobe Ph
+otoshop (Graphics Software) 
+ 
+Interaction:
+ 
+ 
+Generally, users do not interact with system 
+software as it works in the background.
+ 
+Users always interact with application software 
+while doing different activities. 
+ 
+ 
+Dependency:
+ 
+ 
+System software can run 
+independently of the 
+application software.
+ 
+Application software cannot run without the 
+presence of the system software.
+ 
+ 
+ 
+6
+ 
+Unit of Measurements
+ 
+Storage measurements
+: The basic unit used in computer data storage is called
+ 
+a bit 
+(binary digit). Computers use these little bits, which are composed of ones 
+and zeros, to do things and talk to other computers. All your files, for 
+instance, are kept in the computer as binary files and translated into words 
+and pictures by the sof
+tware (which is also ones and zeros). This two 
+
+numbers in it. The decimal number system in contrast has ten unique digits, 
+zero through nine.
+ 
+Computer Storage units
+ 
+Bit
+ 
+BIT
+ 
+0 or 1
+ 
+Kilobyte
+ 
+KB
+ 
+1024 bytes
+ 
+Megabyte
+ 
+MB
+ 
+1024 kilobytes
+ 
+Gigabyte
+ 
+GB
+ 
+1024 megabytes
+ 
+Terabyte
+ 
+TB
+ 
+1024 gigabytes
+ 
+Size example
+ 
+
+-
+ 
+answer to an yes/no question
+ 
+
+-
+ 
+a number from 0 to 255.
+ 
+
+book.
+ 
+
+ 
+
+ 
+
+-
+ 
+a three minute song (128k bitrate)
+ 
+
+-
+900 MB 
+-
+ 
+an CD
+-
+ROM
+ 
+
+-
+114 minutes of uncompressed CD
+-
+quality audio at 1.4 Mbit/s
+ 
+
+-
+16 GB 
+-
+ 
+size of a normal flash dr
+ive
+ 
+ 
+Speed measurement
+: 
+The speed of Central Processing Unit (CPU) is measured by 
+Hertz
+ 
+(Hz), Which represent a CPU cycle. The speed of CPU is known as
+ 
+Computer 
+Speed.
+ 
+ 
+CPU SPEED MEASURES
+ 
+1 hertz or Hz
+ 
+1 cycle per second
+ 
+1 MHz
+ 
+1 million cycles per second
+ 
+or 1000 Hz
+ 
+1 GHz
+ 
+1 billion cycles per second or 1000 MHz
+ 
+ 
+ 
+7
+ 
+Computers classification
+
+
+ 
+ 
+Computers can be generally classified by size and power as follows, though there is
+ 
+Considerable overlap:
+ 
+
+
+ 
+A small, single
+-
+user computer based on
+ 
+a microprocessor. In 
+addition to the microprocessor, a personal computer has a keyboard for entering 
+data, a monitor for displaying information, and a storage device for saving data. 
+ 
+
+-
+user computer. A workstation is like
+ 
+a personal 
+computer, but it has a more powerful microprocessor and a higher
+-
+quality 
+monitor. 
+ 
+
+-
+user computer capable of supporting from 10 to hundreds of
+ 
+users simultaneously.
+ 
+
+-
+user computer capable of
+ 
+supporting many hundreds 
+or thousands of users simultaneously.
+ 
+
+of instructions per second.
+ 
+ 
+Laptop and 
+S
+martphone 
+C
+omputers
+ 
+LAPTOP
+: 
+A laptop is a battery or AC
+-
+powered
+ 
+personal computer that can be easily
+ 
+carried and used in a variety of locations.
+ 
+Many laptops are designed to 
+have all of the
+ 
+functionality of a desktop computer, whichmeans they can 
+generally run the same software and open the same
+ 
+types of files. However
+, 
+some laptops, such as netbooks, sacrifice
+ 
+some functionality in order to be 
+even more portable.
+ 
+ 
+ 
+ 
+ 
+Netbook
+: 
+A netbook is a type of laptop that is
+ 
+designed to be even more portable.
+ 
+Netbooks are often cheaper than laptops
+ 
+or desktops. They are generally 
+less
+ 
+powerful than other types of computers,
+ 
+but they provide enough power for 
+email and internet access, which is
+ 
+where the name "netbook" comes from.
+ 
+Mobile Device
+: 
+A mobile device is basically any handheld computer. It is designed to 
+be
+ 
+extremely portab
+le, often fitting in the palm of your hand or in your pocket.
+ 
+Some mobile devices are more powerful, and they allow you to do many
+ 
+of 
+                                        
+                  
+ 
+
+http://www.acobas.net/teaching/survival/hand
+outs/pcwebopedia.pdf
+ 
+ 
+8
+ 
+the same things you can do with a desktop or laptop computer. These
+ 
+include 
+tablet computers, e
+-
+readers, and smartphones.
+ 
+ 
+ 
+Tablet Computers
+: 
+Like laptops, tablet computers are
+ 
+designed to be portable. 
+However, they
+ 
+provide a very different computing
+ 
+experience. The most 
+obvious difference
+ 
+is that tablet computers don't have
+ 
+keyboards or touchpads. 
+Instead, the
+ 
+entire screen 
+is touch
+-
+sensitive, allowing you to type on a virtual 
+keyboard
+ 
+and use your finger as a mouse pointer.
+ 
+Tablet computers are mostly 
+designed for consuming media, and they are
+ 
+optimized for tasks like web 
+browsing, watching videos, reading e
+-
+books,
+ 
+and playi
+ng games. For many 
+people, a "regular" computer like
+ 
+a desktop or laptop is still needed in order 
+to use some programs.
+ 
+However, the convenience of a tablet computer means 
+that it may be
+ 
+ideal as a second computer.
+ 
+ 
+ 
+Smartphones
+: 
+A smartphone is a powerful
+ 
+mobile
+ 
+phone that is designed to run a
+ 
+variety of applications in addition to
+ 
+phone service. They are basically
+ 
+small 
+tablet computers, and they
+ 
+can be used for web
+ 
+browsing, watching
+ 
+videos, 
+reading e
+-
+books, playing games and more.
+ 
+ 
+ 
+Data, Information an
+d Knowledge
+ 
+Data
+: Facts and figures which relay something specific, but which are not
+ 
+organized 
+in any way and which provide no further information regarding
+ 
+patterns, context, etc. 
+So data means "unstructured facts and figures that
+ 
+have the least impact o
+n the typical 
+manager."
+ 
+ 
+ 
+Information
+: For data to become information, it must be contextualized,
+ 
+categorized, 
+calculated and condensed. Information thus paints a bigger
+ 
+picture; it is data with 
+relevance and purpose. It may convey a trend in the
+ 
+environme
+nt, or perhaps indicate 
+a pattern of sales for a given period of
+ 
+time. Essentially information is found "in 
+answers to questions that begin
+ 
+with such words as who, what, where, when, and how 
+many".
+ 
+ 
+Knowledge
+: Knowledge is closely linked to doing and implies know
+-
+how
+ 
+and 
+understanding. The knowledge possessed by each individual is a
+ 
+product of his 
+experience, and encompasses the norms by which he
+ 
+evaluates new inputs from his 
+surroundings
+.
+ 
+ 
+ 
+ 
+ 
+9
+ 
+T
+he content of the human mind can be
+ 
+classified into four categories:
+ 
+1. Data: symbols
+ 
+2. Information: data that are processed to be useful; provides answers to
+ 
+"who", "what", 
+"where", and "when" questions
+ 
+3. Knowledge: application of data and information; 
+answers "how"
+ 
+questions
+ 
+4. Wisdom: evaluated understanding.
+ 
+We need to understand that processing data produced Information and process
+ 
+Information produces Knowledge and so on
+ 
+ 
+Characteristics of Computer
+ 
+Speed, accuracy, diligence, storage capability a
+nd versatility are some of the key
+ 
+characteristics of a computer. A brief overview of these characteristics are
+ 
+ 
+
+:
+ 
+The computer can process data very fast, at the rate of millions of
+ 
+instructions 
+per second. Some calculations that would have taken h
+ours
+ 
+and days to 
+complete otherwise, can be completed in a few seconds using
+ 
+the computer. 
+For example, calculation and generation of salary slips of
+ 
+thousands of 
+employees of an organization, weather forecasting that
+ 
+requires analysis of a 
+large amount of
+ 
+data related to temperature, pressure
+ 
+and humidity of various 
+places, etc.
+ 
+
+:
+ 
+Computer provides a high degree of accuracy. For example, the
+ 
+computer 
+can accurately give the result of division of any two numbers up
+ 
+to 10 decimal 
+places.
+ 
+
+e
+:
+ 
+When used for a longer period of time, the computer does not
+ 
+get tired or 
+fatigued. It can perform long and complex calculations with the
+ 
+same speed and 
+accuracy from the start till the end.
+ 
+ 
+
+:
+ 
+Large volumes of data and information can be stored in
+ 
+the 
+computer and also retrieved whenever required. A limited amount of
+ 
+data can 
+be stored, temporarily, in the primary memory. Secondary storage
+ 
+devices like 
+floppy disk and compact disk can store a l
+arge amount of data
+ 
+permanently.
+ 
+
+:
+ 
+Computer is versatile in nature. It can perform different types of
+ 
+tasks 
+with the same ease. At one moment you can use the computer to
+ 
+prepare a letter 
+document and in the next moment you may play music or
+ 
+pr
+int a document.
+ 
+Computers have several limitations too. Computer can only perform tasks that 
+it has
+ 
+been programmed to do. 
+ 
+ 
+ 
+ 
+10
+ 
+Computer cannot do any work without instructions from
+ 
+the user. It executes 
+instructions as specified by the user and does not take
+ 
+its own
+ 
+decisions.
+ 
+Computer Viruses
+
+ 
+Viruses: A virus is a small piece of software that piggybacks on real programs. For 
+example, a virus might attach itself to a program such as a spreadsheet program. 
+Each time the spreadsheet program runs, the virus ru
+ns, too, and it has the 
+chance to reproduce (by attaching to other programs) or wreak havoc.
+ 
+
+-
+mail viruses: An e
+-
+mail virus travels as an attachment to e
+-
+mail messages, and 
+usually replicates itself by automatically mailing itself to dozens of people 
+in the victim's e
+-
+mail address book. Some e
+-
+mail viruses don't even require 
+a double
+-
+click 
+--
+ 
+th
+ey launch when you view the infected message in the 
+preview pane of your e
+-
+mail software [source: Johnson].
+ 
+
+do one thing (it may claim to be a game) but instead does damage 
+when you 
+run it (it may erase your hard disk). Trojan horses have no way to replicate 
+automatically.
+ 
+
+holes to replicate itself. A copy of the worm scans the network for an
+other 
+machine that has a specific security hole. It copies itself to the new machine 
+using the security hole, and then starts replicating from there, as well.
+ 
+What
+ 
+are
+ 
+some
+ 
+tips
+ 
+to
+ 
+avoid
+ 
+viruses
+ 
+and
+ 
+lessen
+ 
+their
+ 
+impact
+
+
+ 
+ 
+Install anti
+-
+virus software from
+ 
+a reputable vendor. Update it and use it 
+regularly
+
+ 
+ 
+In addition to scanning for viruses on a regular basis, install an "on access" 
+scanner (included in most anti
+-
+virus software packages) and configure it to start 
+each time you start up your computer. This
+ 
+will protect your system by 
+checking for viruses each time you run an executable file
+
+ 
+ 
+Use a virus scan before you open any new programs or files that may contain 
+executable code. This includes packaged software that you buy from the store 
+as well as any 
+program you might download from the Internet
+
+ 
+ 
+If you are a member of an online community or chat room, be very careful 
+about accepting files or clicking links that you find or that people send you 
+within the community
+
+ 
+ 
+Make sure you back up your data 
+(documents, bookmark files, important email 
+messages, etc.) on disc so that in the event of a virus infection, you do not lose 
+valuable work
+
+ 
+ 
+                                        
+                  
+ 
+
+
+http://computer.howstuffworks.com/virus.htm
+ 
+
+
+http://www.us
+-
+cert.gov/publications/virus
+-
+basics
+ 
