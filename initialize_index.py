@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import glob, os,re,math
 from functools import reduce
 from sklearn.metrics.pairwise import cosine_similarity
@@ -6,16 +7,31 @@ from operator import itemgetter
 from numpy import dot
 from numpy.linalg import norm
 import json
+from stemming.porter2 import stem
+from stop_words import get_stop_words
 
+stop_words = get_stop_words('en')
+p = ['to','and','it','the']
+stop_words.append(p)
 #this process creates a dictionary that maps pdfs to its words
+
 def process_files(filenames):
 	file_to_terms = {}
-	for file in filenames:
-		pattern = re.compile('[\W_]+')
-		file_to_terms[file] = open(file, 'r').read().lower()
-		file_to_terms[file] = pattern.sub(' ',file_to_terms[file])
-		re.sub(r'[\W_]+','', file_to_terms[file])
-		file_to_terms[file] = file_to_terms[file].split()
+	for idx,file in enumerate(filenames):
+		try:
+			pattern = re.compile('[\W_]+')
+			file_as_string = open(file, 'r').read().lower()
+			file_as_string = pattern.sub(' ',file_as_string)
+			re.sub(r'[\W_]+','', file_as_string)
+			for word in file_as_string.split():
+				if word not in stop_words:
+					if idx in file_to_terms.keys():
+						file_to_terms[idx].append(stem(word))
+					else:
+						file_to_terms[idx] = [stem(word),]
+		except UnicodeDecodeError:
+			pass
+
 	return file_to_terms
 
 #this process maps words from single file to their positions
@@ -50,7 +66,7 @@ def get_inverted_index(temp_index):
 #calculate the term-frequency and return every document as a vector of unique words
 def term_frequency(filenames,inverted_index):
 
-	files_as_vectors = {key : [0]*len(inverted_index.keys()) for key in filenames}
+	files_as_vectors = {key : [0]*len(inverted_index.keys()) for key in range(len(filenames))}
 	count =  0
 	for i in inverted_index.keys():
 		for key,value in inverted_index[i].items():
@@ -79,25 +95,30 @@ def inverse_document_frequency(files_as_vectors,inverted_index,filenames):
 		idf = math.log(idf)
 		for j in files_as_vectors.keys():
 			files_as_vectors[j][count] = files_as_vectors[j][count]*idf
+			files_as_vectors[j][count] = float('{:.10f}'.format(files_as_vectors[j][count]))
 		count = count + 1
 	return files_as_vectors
 
 
 filenames = []
 
-os.chdir("/home/rajas/PDF_spider")
+os.chdir("/home/rajas/PDF_spider/all_text")
 for file in glob.glob("*.txt"):
     filenames.append(file)
 
+file_encoding = {}
+for idx,value in enumerate(filenames):
+	file_encoding[idx] = value
 
 file_to_terms = process_files(filenames)
-temp_index = {}
 
+temp_index = {}
 for key,value in file_to_terms.items():
 
     words_to_pos = map_words_to_pos(value)
     temp_index[key] = words_to_pos
 
+# print(temp_index)
 inverted_index = get_inverted_index(temp_index)
 
 files_as_vectors = term_frequency(filenames,inverted_index)
@@ -111,5 +132,10 @@ with open('files_as_vectors.json', 'w') as fp:
 
 with open('file_names.json', 'w') as fp:
     json.dump(filenames, fp)
+
+with open('file_encoding.json', 'w') as fp:
+    json.dump(file_encoding, fp)
+
+# print(inverted_index)
 # print(phrase_query)
 # print(final_result)

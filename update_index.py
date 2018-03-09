@@ -18,7 +18,7 @@ def get_modified_files():
     with open('file_names.json') as json_data:
         file_names = json.load(json_data)
 
-    os.chdir("/home/rajas/PDF_spider")
+    os.chdir("/home/rajas/PDF_spider/all_text")
     for file in glob.glob("*.txt"):
         if file not in file_names and file not in new_files:
             new_files.append(file)
@@ -103,6 +103,7 @@ def inverse_document_frequency(files_as_vectors,inverted_index,filenames):
 		for j in files_as_vectors.keys():
 			if j in filenames:
 				files_as_vectors[j][count] = files_as_vectors[j][count]*idf
+				files_as_vectors[j][count] = float('{:.10f}'.format(files_as_vectors[j][count]))
 		count = count + 1
 	return files_as_vectors
 
