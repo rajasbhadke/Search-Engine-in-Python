@@ -70,6 +70,7 @@ def term_frequency(filenames,inverted_index):
 	count =  0
 	for i in inverted_index.keys():
 		for key,value in inverted_index[i].items():
+			# print(type(key))
 			files_as_vectors[key][count] = len(value)
 		count = count + 1
 
@@ -108,6 +109,7 @@ for file in glob.glob("*.txt"):
 
 file_encoding = {}
 for idx,value in enumerate(filenames):
+	# print(type(idx))
 	file_encoding[idx] = value
 
 file_to_terms = process_files(filenames)
