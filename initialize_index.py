@@ -13,29 +13,51 @@ from stop_words import get_stop_words
 stop_words = get_stop_words('en')
 p = ['to','and','it','the']
 stop_words.append(p)
+stop_words.remove('not')
+stop_words.remove('be')
+stop_words.remove('no')
+
+
 #this process creates a dictionary that maps pdfs to its words
-
+inverted_index_line = {}
 def process_files(filenames):
-	file_to_terms = {}
-	for idx,file in enumerate(filenames):
-		try:
-			pattern = re.compile('[\W_]+')
-			file_as_string = open(file, 'r').read().lower()
-			file_as_string = pattern.sub(' ',file_as_string)
-			re.sub(r'[\W_]+','', file_as_string)
-			for word in file_as_string.split():
-				if word not in stop_words:
-					if idx in file_to_terms.keys():
-						file_to_terms[idx].append(stem(word))
-					else:
-						file_to_terms[idx] = [stem(word),]
-		except UnicodeDecodeError:
-			pass
+    file_to_terms = {}
+    for idx,file in enumerate(filenames):
+        try:
+            idx = str(idx)
+            pattern = re.compile('[\W_]+')
+            file_as_string = open(file, 'r')
+            line_num = 0;
+            for line in file_as_string.readlines():
+                line_num += 1
+                line = line.lower()
+                line = pattern.sub(' ',line)
+                re.sub(r'[\W_]+','', line)
+                for word in line.split():
+                    if word not in stop_words:
+                        word = stem(word)
+                        if word in inverted_index_line.keys():
+                            if idx in inverted_index_line[word].keys():
+                                if inverted_index_line[word][idx][-1] != line_num:
+                                    inverted_index_line[word][idx].append(line_num)
+                            else:
+                                inverted_index_line[word][idx] = [line_num,]
+                        else:
+                            inverted_index_line[word] = {idx : [line_num,]}
 
-	return file_to_terms
+                        if idx in file_to_terms.keys():
+                            file_to_terms[idx].append(word)
+                        else:
+                            file_to_terms[idx] = [word,]
+        except UnicodeDecodeError:
+            pass
+
+    return file_to_terms
+
+
+
 
 #this process maps words from single file to their positions
-
 def map_words_to_pos(word_list):
     words_to_pos = {}
     for index,value in enumerate(word_list):
@@ -46,6 +68,7 @@ def map_words_to_pos(word_list):
             words_to_pos[value] = [index]
 
     return words_to_pos
+
 
 #this process returns the final inverted-index
 def get_inverted_index(temp_index):
@@ -66,7 +89,7 @@ def get_inverted_index(temp_index):
 #calculate the term-frequency and return every document as a vector of unique words
 def term_frequency(filenames,inverted_index):
 
-	files_as_vectors = {key : [0]*len(inverted_index.keys()) for key in range(len(filenames))}
+	files_as_vectors = {str(key) : [0]*len(inverted_index.keys()) for key in range(len(filenames))}
 	count =  0
 	for i in inverted_index.keys():
 		for key,value in inverted_index[i].items():
@@ -107,11 +130,11 @@ os.chdir("/home/rajas/PDF_spider/all_text")
 for file in glob.glob("*.txt"):
     filenames.append(file)
 
+#mapping the filenames to a unique number
 file_encoding = {}
 for idx,value in enumerate(filenames):
-	# print(type(idx))
-	file_encoding[idx] = value
-
+    idx=str(idx)
+    file_encoding[idx] = value
 file_to_terms = process_files(filenames)
 
 temp_index = {}
@@ -138,6 +161,8 @@ with open('file_names.json', 'w') as fp:
 with open('file_encoding.json', 'w') as fp:
     json.dump(file_encoding, fp)
 
+with open('inverted_index_line.json', 'w') as fp:
+    json.dump(inverted_index_line, fp)
 # print(inverted_index)
 # print(phrase_query)
 # print(final_result)
