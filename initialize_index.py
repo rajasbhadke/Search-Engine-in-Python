@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 import glob, os,re,math
-from functools import reduce
-from sklearn.metrics.pairwise import cosine_similarity
 from collections import OrderedDict
-from operator import itemgetter
 from numpy import dot
 from numpy.linalg import norm
-import json
 from stemming.porter2 import stem
 from stop_words import get_stop_words
+import pickle
+from operator import itemgetter
+
 
 stop_words = get_stop_words('en')
 p = ['to','and','it','the']
@@ -89,44 +88,45 @@ def get_inverted_index(temp_index):
 #calculate the term-frequency and return every document as a vector of unique words
 def term_frequency(filenames,inverted_index):
 
-	files_as_vectors = {str(key) : [0]*len(inverted_index.keys()) for key in range(len(filenames))}
-	count =  0
-	for i in inverted_index.keys():
-		for key,value in inverted_index[i].items():
-			# print(type(key))
-			files_as_vectors[key][count] = len(value)
-		count = count + 1
+    files_as_vectors = {str(key) : None for key in range(len(filenames))}
+    words_to_num = {}
+    count =  0
+    total_docs = len(filenames)
+    for i in inverted_index.keys():
+        words_to_num[count] = i
+        for key,value in inverted_index[i].items():
+            if files_as_vectors[key] is not None:
+                files_as_vectors[key].append([count,len(value)])
+            else:
+                files_as_vectors[key] = [[count,len(value)],]
 
-	for i in files_as_vectors.keys():
-		rms = 0
-		for j in files_as_vectors[i]:
-			rms = rms + j*j
-		rms = math.sqrt(rms)
-		if rms !=0 :
-			for idx in range(len(files_as_vectors[i])):
-				files_as_vectors[i][idx] = files_as_vectors[i][idx]/rms
+        count = count + 1
+    # print(files_as_vectors.keys())
+    for i in files_as_vectors.keys():
+        rms = 0
+        if files_as_vectors[i] is not None:
+            for j in files_as_vectors[i]:
+                rms = rms + j[1]*j[1]
+        rms = math.sqrt(rms)
+        if rms !=0 :
+            for idx in range(len(files_as_vectors[i])):
+                files_as_vectors[i][idx][1] = files_as_vectors[i][idx][1]/rms
+    # print(files_as_vectors)
+    for i in files_as_vectors.keys():
+        for idx,value in enumerate(files_as_vectors[i]):
+            doc_freq = len(inverted_index[words_to_num[files_as_vectors[i][idx][0]]].keys())
+            idf = total_docs/doc_freq
+            idf = math.log(idf)
+            tf_idf = files_as_vectors[i][idx][1]*idf
+            tf_idf = float('{:.5f}'.format(tf_idf))
+            files_as_vectors[i][idx][1] = tf_idf
 
-	return files_as_vectors
-
-def inverse_document_frequency(files_as_vectors,inverted_index,filenames):
-
-	count = 0
-	for i in inverted_index.keys():
-
-		doc_freq = len(inverted_index[i].keys())
-		total_docs = len(filenames)
-		idf = total_docs/doc_freq
-		idf = math.log(idf)
-		for j in files_as_vectors.keys():
-			files_as_vectors[j][count] = files_as_vectors[j][count]*idf
-			files_as_vectors[j][count] = float('{:.10f}'.format(files_as_vectors[j][count]))
-		count = count + 1
-	return files_as_vectors
+    return files_as_vectors
 
 
 filenames = []
 
-os.chdir("/home/rajas/PDF_spider/all_text")
+os.chdir("/home/rajas/Documents/PDF_spider_2/all_text")
 for file in glob.glob("*.txt"):
     filenames.append(file)
 
@@ -145,24 +145,23 @@ for key,value in file_to_terms.items():
 
 # print(temp_index)
 inverted_index = get_inverted_index(temp_index)
-
 files_as_vectors = term_frequency(filenames,inverted_index)
-files_as_vectors = inverse_document_frequency(files_as_vectors,inverted_index,filenames)
+# print(files_as_vectors)
 
-with open('final_inverted_index.json', 'w') as fp:
-    json.dump(inverted_index, fp)
+with open('final_inverted_index.pickle', 'wb') as handle:
+    pickle.dump(inverted_index, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('files_as_vectors.json', 'w') as fp:
-    json.dump(files_as_vectors, fp)
+with open('files_as_vectors.pickle', 'wb') as handle:
+    pickle.dump(files_as_vectors, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('file_names.json', 'w') as fp:
-    json.dump(filenames, fp)
+with open('file_names.pickle', 'wb') as handle:
+    pickle.dump(filenames, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('file_encoding.json', 'w') as fp:
-    json.dump(file_encoding, fp)
+with open('file_encoding.pickle', 'wb') as handle:
+    pickle.dump(file_encoding, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('inverted_index_line.json', 'w') as fp:
-    json.dump(inverted_index_line, fp)
+with open('inverted_index_line.pickle', 'wb') as handle:
+    pickle.dump(inverted_index_line, handle, protocol=pickle.HIGHEST_PROTOCOL)
 # print(inverted_index)
 # print(phrase_query)
 # print(final_result)
