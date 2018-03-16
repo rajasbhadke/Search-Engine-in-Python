@@ -16,27 +16,8 @@ for i in p:
 stop_words.remove('not')
 stop_words.remove('be')
 stop_words.remove('no')
-# def get_modified_files():
-#     _dir = os.getcwd()
-#     new_files = []
-#     new_files = list((fle for rt, _, f in os.walk(_dir) for fle in f if time.time() - os.stat(
-#         os.path.join(rt, fle)).st_mtime < 30))
-#
-#
-#     with open('file_names.json') as json_data:
-#         file_names = json.load(json_data)
-#
-#     os.chdir("/home/rajas/PDF_spider/all_text")
-#     for file in glob.glob("*.txt"):
-#         if file not in file_names and file not in new_files:
-#             new_files.append(file)
-#
-#     recent_files = []
-#     for i in new_files:
-#         if i[-3:] == "txt":
-#             recent_files.append(i)
-#
-#     return recent_files
+
+
 
 os.chdir("/home/rajas/PDF_spider/all_text")
 
@@ -52,6 +33,25 @@ with open('file_encoding.pickle', 'rb') as handle:
 with open('inverted_index_line.pickle', 'rb') as handle:
     inverted_index_line = pickle.load(handle)
 
+def get_modified_files(new_files):
+    _dir = os.getcwd()
+    new_files = []
+    new_files = list((fle for rt, _, f in os.walk(_dir) for fle in f if time.time() - os.stat(
+        os.path.join(rt, fle)).st_mtime < 500))
+
+    for file in glob.glob("*.txt"):
+        if file not in file_names and file not in new_files:
+            new_files.append(file)
+
+    recent_files = []
+    for i in new_files:
+        if i[-3:] == "txt":
+            recent_files.append(i)
+    for i in recent_files:
+        if i in new_files:
+            recent_files.remove(i)
+    return recent_files
+
 def get_new_files():
 
     new_files = []
@@ -62,6 +62,7 @@ def get_new_files():
             file_names.append(file)
 
     return new_files
+
 
 def get_deleted_files():
 
@@ -172,6 +173,8 @@ def get_files_as_vectors(filenames,inverted_index):
 
 new_files = get_new_files()
 deleted_files = get_deleted_files()
+modified_files = get_modified_files(new_files)
+# print(modified_files)
 flag = 0
 
 if deleted_files:
@@ -184,13 +187,10 @@ if deleted_files:
             deleted_codes.append(i)
 
     inverted_index = index_after_delete(deleted_codes,inverted_index)
-    # print(inverted_index)
     #change encodings
     for i in list(file_encoding.keys()):
         if file_encoding[i] in deleted_files:
-            # print(file_encoding[i])
             temp = file_encoding.pop(i)
-
 
 if new_files:
     flag = 1
@@ -203,14 +203,41 @@ if new_files:
     #update inverted index
     inverted_index = get_inverted_index(new_files,start)
 
+if modified_files:
+
+    flag = 1
+    #delete files first
+    deleted_codes = []
+    for i in file_encoding.keys():
+        if file_encoding[i] in modified_files:
+            deleted_codes.append(i)
+
+    inverted_index = index_after_delete(deleted_codes,inverted_index)
+    #change encodings
+    for i in list(file_encoding.keys()):
+        if file_encoding[i] in modified_files:
+            temp = file_encoding.pop(i)
+
+    #then add files
+    start = int(list(file_encoding.keys())[-1])
+    for idx,value in enumerate(modified_files):
+        temp = str(idx+start+1)
+        file_encoding[temp] = value
+
+    #update inverted index
+    inverted_index = get_inverted_index(modified_files,start)
+
+
+
 if flag == 1:
     files_as_vectors = get_files_as_vectors(file_names,inverted_index)
 
 with open('final_inverted_index.pickle', 'wb') as handle:
     pickle.dump(inverted_index, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('files_as_vectors.pickle', 'wb') as handle:
-    pickle.dump(files_as_vectors, handle, protocol=pickle.HIGHEST_PROTOCOL)
+if flag == 1:
+    with open('files_as_vectors.pickle', 'wb') as handle:
+        pickle.dump(files_as_vectors, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 with open('file_names.pickle', 'wb') as handle:
     pickle.dump(file_names, handle, protocol=pickle.HIGHEST_PROTOCOL)
