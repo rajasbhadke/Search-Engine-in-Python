@@ -8,16 +8,21 @@ from stop_words import get_stop_words
 from bisect import *
 import pickle
 from operator import itemgetter
+# from autocorrect import spell
+
 stop_words = get_stop_words('en')
 p = ['to','and','it','the']
-stop_words.append(p)
+for i in p:
+    stop_words.append(i)
 stop_words.remove('not')
 stop_words.remove('be')
 stop_words.remove('no')
+
+
 filenames = []
-os.chdir("/home/rajas/Documents/PDF_spider_2/all_text")
-for file in glob.glob("*.txt"):
-    filenames.append(file)
+os.chdir("/home/rajas/PDF_spider/all_text")
+with open('file_names.pickle', 'rb') as handle:
+    filenames = pickle.load(handle)
 
 with open('final_inverted_index.pickle', 'rb') as handle:
     inverted_index = pickle.load(handle)
@@ -97,7 +102,8 @@ def merge_documents(lol,mode):
 
             if idx < len(lol):
                 if bisect_left(lol[idx],lol[0][j]+idx) < len(lol[idx]):
-                    j = bisect_left(lol[0],lol[idx][bisect_left(lol[idx],lol[0][j]+idx)])
+                    j = bisect_left(lol[0],lol[idx][bisect_left(lol[idx],lol[0][j]+idx)]-idx)
+                    # print(j)
                 else:
                     j = j +1
             else:
@@ -130,9 +136,11 @@ def basic_phrase_query(wordList,inverted_index):
                 else:
                     filenames_dict[j] = [inverted_index[i][j],]
 
+    # print(filenames_dict)
     for i in filenames_dict.keys():
         if len(filenames_dict[i]) == len(wordList):
             intersection_list = merge_documents(filenames_dict[i],1)
+            # print(intersection_list)
             if len(intersection_list) != 0:
                 basic_query.append(i)
     return basic_query
@@ -221,60 +229,57 @@ def get_line_numbers(result,wordList):
 print("1 : any of the words")
 print("2 : all of the words")
 print("3 : exact phrase")
-print("select the type of query:")
-select = input()
-print("enter the query:")
-query = input()
-query = query.lower()
-temp_wordList = re.sub("[^\w]", " ",  query).split()
-wordList = []
-for i in temp_wordList:
-    if i not in stop_words:
-        wordList.append(stem(i))
+while True:
+    print("select the type of query:")
+    select = input()
+    if select=="-1":
+        break
+    print("enter the query:")
+    query = input()
+    query = query.lower()
+    temp_wordList = re.sub("[^\w]", " ",  query).split()
+    wordList = []
+    for i in temp_wordList:
+        if i not in stop_words:
+            wordList.append(i)
 
-if len(wordList) == 0:
-    print("Enter a valid query")
+    if len(wordList) == 0:
+        print("Enter a valid query")
 
-else:
-    if select == "1":
-        any_query = any_word_query(wordList,inverted_index)
-        query_as_v = query_as_vector(inverted_index,wordList,filenames)
-        final_result = final_result_with_ranking(query_as_v,files_as_vectors,any_query)
-        line_num =  get_line_numbers(final_result,wordList)
-        if line_num:
-            for i,j in line_num.items():
-                print(i)
-                print(j)
-        else:
-            print("No match found")
-    elif select == "2":
-         lol = get_all_documents(wordList,inverted_index)
-         conjuction = merge_documents(lol,0)
-         conjuction = [str(x) for x in conjuction]
-         query_as_v = query_as_vector(inverted_index,wordList,filenames)
-         final_result = final_result_with_ranking(query_as_v,files_as_vectors,conjuction)
-         line_num =  get_line_numbers(final_result,wordList)
-         if line_num:
-             for i,j in line_num.items():
-                 print(i)
-                 print(j)
-         else:
-             print("No match found")
-    elif select == "3":
-        while True:
-            query = input()
-            query = query.lower()
-            temp_wordList = re.sub("[^\w]", " ",  query).split()
-            wordList = []
-            for i in temp_wordList:
-                if i not in stop_words:
-                    wordList.append(stem(i))
-            if query == "0":
-                break
+    else:
+        if select == "1":
+            any_query = any_word_query(wordList,inverted_index)
+            query_as_v = query_as_vector(inverted_index,wordList,filenames)
+            final_result = final_result_with_ranking(query_as_v,files_as_vectors,any_query)
+            # print(final_result)
+            # print(file_encoding)
+            line_num =  get_line_numbers(final_result,wordList)
+            if line_num:
+                for i,j in line_num.items():
+                    print(i)
+                    print(j)
+            else:
+                print("No match found")
+        elif select == "2":
+             lol = get_all_documents(wordList,inverted_index)
+             conjuction = merge_documents(lol,0)
+             conjuction = [str(x) for x in conjuction]
+             query_as_v = query_as_vector(inverted_index,wordList,filenames)
+             final_result = final_result_with_ranking(query_as_v,files_as_vectors,conjuction)
+             line_num =  get_line_numbers(final_result,wordList)
+             if line_num:
+                 for i,j in line_num.items():
+                     print(i)
+                     print(j)
+             else:
+                 print("No match found")
+        elif select == "3":
 
             phrase_query = basic_phrase_query(wordList,inverted_index)
+            # print(phrase_query)
             query_as_v = query_as_vector(inverted_index,wordList,filenames)
             final_result = final_result_with_ranking(query_as_v,files_as_vectors,phrase_query)
+            # print(final_result)
             line_num =  get_line_numbers(final_result,wordList)
             for i in line_num.keys():
                 line_num[i] = merge_documents(line_num[i],0)
